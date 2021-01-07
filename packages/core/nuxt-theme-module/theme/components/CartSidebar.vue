@@ -135,7 +135,7 @@ export default {
     SfCollectedProduct,
     SfImage
   },
-  setup(_, { root }) {
+  setup() {
     const { isCartSidebarOpen, toggleCartSidebar } = useUiState();
     const { cart, removeItem, updateItemQty, load: loadCart } = useCart();
     const { isAuthenticated } = useUser();
@@ -151,15 +151,7 @@ export default {
     watch(totalItems, () => {
       send({
         type: 'info',
-        message: `Total items: ${totalItems.value}`,
-        action: {
-          text: 'Go to checkout',
-          onClick: () => {
-            root.$router.push('/checkout/personal-details');
-          }
-        },
-        persist: true,
-        icon: 'heart'
+        message: `Total items: ${totalItems.value}`
       });
     });
 
